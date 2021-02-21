@@ -1,4 +1,4 @@
-# eapdaproject
+# EAPDA
 
 Deivis Dervinis EAPDA application for Computer Science (Mobile Computing) thesis
 
