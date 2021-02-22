@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344613598022",
+    "project_id": "eapda-5ea4d",
+    "storage_bucket": "eapda-5ea4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344613598022:android:68fdec25400769e1296b47",
+        "android_client_info": {
+          "package_name": "com.example.eapdaproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344613598022-136pts1g1dgkc929s5l6ropaquoosqi4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvPlOOTQW63QZxaPeThJ6KY9cJCdm2cKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344613598022-136pts1g1dgkc929s5l6ropaquoosqi4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
