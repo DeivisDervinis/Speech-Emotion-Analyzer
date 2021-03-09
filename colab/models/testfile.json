@@ -1,1 +1,8 @@
-[{"fileName":"joined_audio_3.wav","emotion":"disgust"}]
+[
+  {"fileName":"joined_sound_1.wav","emotion":"Neutral"},
+  {"fileName":"joined_sound_2.wav","emotion":"Fear"},
+  {"fileName":"joined_sound_3.wav","emotion":"Disgust"},
+  {"fileName":"joined_sound_4.wav","emotion":"Angry"},
+  {"fileName":"joined_sound_5.wav","emotion":"Fear"},
+  {"fileName":"joined_sound_6.wav","emotion":"Neutral"}
+]
