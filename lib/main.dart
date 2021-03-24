@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tflite/tflite.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return new MaterialApp(
       home: new Scaffold(
         body: SafeArea(
-          child: new RecorderExample(),
+          child: new RecordScreen(),
         ),
       ),
     );
@@ -36,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class RecorderExample extends StatefulWidget {
-
   final LocalFileSystem localFileSystem;
 
   RecorderExample({localFileSystem})
@@ -74,32 +74,34 @@ class RecorderExampleState extends State<RecorderExample> {
             Padding(
               padding: const EdgeInsets.all(30),
               child: new MaterialButton(
-                onPressed: _currentStatus == RecordingStatus.Recording ? null : () {
-                  switch (_currentStatus) {
-                    case RecordingStatus.Initialized:
-                      {
-                        _start();
-                        break;
-                      }
-                    case RecordingStatus.Recording:
-                      {
-                        _pause();
-                        break;
-                      }
-                    case RecordingStatus.Paused:
-                      {
-                        _resume();
-                        break;
-                      }
-                    case RecordingStatus.Stopped:
-                      {
-                        _init();
-                        break;
-                      }
-                    default:
-                      break;
-                  }
-                },
+                onPressed: _currentStatus == RecordingStatus.Recording
+                    ? null
+                    : () {
+                        switch (_currentStatus) {
+                          case RecordingStatus.Initialized:
+                            {
+                              _start();
+                              break;
+                            }
+                          case RecordingStatus.Recording:
+                            {
+                              _pause();
+                              break;
+                            }
+                          case RecordingStatus.Paused:
+                            {
+                              _resume();
+                              break;
+                            }
+                          case RecordingStatus.Stopped:
+                            {
+                              _init();
+                              break;
+                            }
+                          default:
+                            break;
+                        }
+                      },
                 color: Colors.indigo[500],
                 textColor: Colors.white,
                 child: Icon(
@@ -116,8 +118,7 @@ class RecorderExampleState extends State<RecorderExample> {
               minWidth: 200,
               height: 100,
               child: FlatButton(
-                onPressed:
-                    _fileReceived == false ? _stop : null,
+                onPressed: _fileReceived == false ? _stop : null,
                 child: new Text("Stop",
                     style: TextStyle(color: Colors.white, fontSize: 48)),
                 color: Colors.red,
@@ -129,13 +130,15 @@ class RecorderExampleState extends State<RecorderExample> {
               minWidth: 200,
               height: 100,
               child: FlatButton(
-                onPressed:
-                  _fileReceived != true ? null : () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RecordScreen()),
-                    );
-                  },
+                onPressed: _fileReceived != true
+                    ? null
+                    : () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RecordScreen()),
+                        );
+                      },
                 child: new Text("Results",
                     style: TextStyle(color: Colors.white, fontSize: 48)),
                 color: Colors.green,
@@ -169,7 +172,8 @@ class RecorderExampleState extends State<RecorderExample> {
 
         // can add extension like ".mp4" ".wav" ".m4a" ".aac"
         customPath = appDocDirectory.path +
-            customPath + DateTime.now().millisecondsSinceEpoch.toString();
+            customPath +
+            DateTime.now().millisecondsSinceEpoch.toString();
 
         // .wav <---> AudioFormat.WAV
         // .mp4 .m4a .aac <---> AudioFormat.AAC
@@ -245,23 +249,22 @@ class RecorderExampleState extends State<RecorderExample> {
       _fileReceived = true;
     });
   }
-
 }
 
-class RecordScreen extends StatelessWidget{
-
+class RecordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Emotion Recognition Application"),
-      ),
-      body: Center(
-          child: Text(
-            'Finished Recording',
-            style: TextStyle(fontSize: 64)
+        appBar: AppBar(
+          title: Text("Emotion Recognition Application"),
+        ),
+        body: Center(
+          child: new Padding(
+            padding: new EdgeInsets.all(8.0),
+            child: new Column(children: <Widget>[
+              new Text("Finished Recording"),
+            ]),
           ),
-      ),
-    );
+        ));
   }
 }

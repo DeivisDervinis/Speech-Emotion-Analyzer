@@ -18,11 +18,10 @@ environment:
 
 dependencies:
   flutter:
+    assets:
+      - assets/model.tflite
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
   english_words: ^3.1.5
   flutter_audio_recorder: ^0.5.5
   audioplayers:
@@ -32,6 +31,7 @@ dependencies:
   firebase_analytics: ^5.0.2
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.12.9+5
+  tflite: ^1.0.4
 
 dev_dependencies:
   flutter_test:
